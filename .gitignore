@@ -1,0 +1,39 @@
+# self defined
+venv/*
+migrations/*
+db.sqlite3
+media/*
+static/*
+local_settings.py
+
+
+### tmp file ###
+*.log
+
+
+### python ###
+*.py[cod]
+__pycache__/
+*.so  # C extensions
+pip-log.txt  # Installer logs
+
+
+### Vim ###
+.ropeproject/*
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*~
+
+### Pycharm ###
+.idea/*
+
+
+### Mac ###
+.DS_Store
+
+
+# SVN
+.svn
+
+
+!PLACEHOLDER
