@@ -46,11 +46,12 @@ $(document).ready(function(){
     black.each( function(){
         addEvent(this, "mousedown", mdbg);
         addEvent(this, "mouseup", mubgTime);
-
+        addEvent(this, "mouseout", mubgTime);
     });
 
     white.each( function(){
         addEvent(this, "mousedown", mdbg);
         addEvent(this, "mouseup", mubgTime);
+        addEvent(this, "mouseout", mubgTime);
     });
 })
