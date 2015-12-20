@@ -3,7 +3,7 @@ function addEvent(obj, type, fn){ // type是无 on 的事件
     if(window.addEventListener){
         // Chrome,FireFox,Opera,Safari,IE9.0及以上
         obj.addEventListener(type, fn, false);
-    } else { 
+    } else {
         // IE8.0及以下
         obj.attachEvent('on'+type, fn);
     }
@@ -17,6 +17,8 @@ function mdbg() {
     } else {
         me.css("background-color","#60b044")
     }
+
+    sdPlayer(me);
 }
 
 function mubgTime() {
@@ -28,18 +30,27 @@ function mubgTime() {
     }
 }
 
+// mousedown发声
+var sdPlayer = function(that){
+    var ext = '.ogg';
+    var audioObj = new Audio("sound/" + that.attr('id') + ext);
+    audioObj.play()
+};
+
+
 // ready 执行完后会销毁，将mubg,mubgTime放在里面，只将 mubgTime 函数绑定到了 mouseup 事件，但 mubg 未绑定（在mubgTime 中只以自付存在，当用时才去调用 mubg 函数）
 $(document).ready(function(){
     var white = $(".whiteKey");
     var black = $(".blackKey");
-    // 给每个黑色键添加变色事件 
+    // 给每个黑色键添加变色事件
     black.each( function(){
         addEvent(this, "mousedown", mdbg);
-        addEvent(this, "mouseup", mubgTime);        
+        addEvent(this, "mouseup", mubgTime);
+
     });
-    
+
     white.each( function(){
         addEvent(this, "mousedown", mdbg);
-        addEvent(this, "mouseup", mubgTime);        
+        addEvent(this, "mouseup", mubgTime);
     });
 })
