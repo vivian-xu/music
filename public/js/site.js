@@ -9,8 +9,18 @@ function addEvent(obj, type, fn){ // type是无 on 的事件
     }
 }
 
+// 判断交互方式
+var interEvent = function(){
+var eventObj={};
+
+eventObj.isEvent = "ontouchend" in document ? "touch" : ("onmousedown" in document ? "mouse" : "keyboard");
+
+return eventObj.isEvent;
+}
+console.log(interEvent());
+
 // mousedown 时背景色改变
-function mdbg() {
+function md() {
     var me = $(this);
     if( me.hasClass("blackKey")){
         me.css("background-color","#eee");
@@ -21,6 +31,7 @@ function mdbg() {
     sdPlayer(me);
 }
 
+// mouseup
 function mubgTime() {
     var me = $(this);
     if( me.hasClass("blackKey")){
@@ -44,14 +55,31 @@ $(document).ready(function(){
     var black = $(".blackKey");
     // 给每个黑色键添加变色事件
     black.each( function(){
-        addEvent(this, "mousedown", mdbg);
-        addEvent(this, "mouseup", mubgTime);
-        addEvent(this, "mouseout", mubgTime);
+        if( interEvent() === "mouse" ) {
+            addEvent(this, "mousedown", md);
+            addEvent(this, "mouseup", mubgTime);
+            addEvent(this, "mouseout", mubgTime);
+        } else if( interEvent() === "touch" ){
+            addEvent(this, "touchstart", md);
+            addEvent(this, "touchmove", md);
+            addEvent(this, "touchend", mubgTime);
+        }
+        else {
+            console.log("keyboard");
+        }
     });
 
     white.each( function(){
-        addEvent(this, "mousedown", mdbg);
-        addEvent(this, "mouseup", mubgTime);
-        addEvent(this, "mouseout", mubgTime);
+        if( interEvent() === "mouse" ) {
+            addEvent(this, "mousedown", md);
+            addEvent(this, "mouseup", mubgTime);
+            addEvent(this, "mouseout", mubgTime);
+        } else if( interEvent() === "touch" ){
+            addEvent(this, "touchstart", md);
+            addEvent(this, "touchend", mubgTime);
+        }
+        else {
+            console.log("keyboard");
+        }
     });
 })
