@@ -1,3 +1,6 @@
+
+
+console.log($("html").css("font-size"));
 //  添加事件，兼容大部分浏览器
 function addEvent(obj, type, fn){ // type是无 on 的事件
     if(window.addEventListener){
@@ -43,9 +46,20 @@ function mubgTime() {
 
 // mousedown发声
 var sdPlayer = function(that){
+     var userAgent = navigator.userAgent;
     var ext = '.ogg';
-    var audioObj = new Audio("sound/" + that.attr('id') + ext);
-    audioObj.play()
+    var exts = '.mp3'
+    var audioObj = (userAgent.indexOf("Safari") > -1) ? new Audio("sound/mp3/1.mp3") : new Audio("sound/ogg/" + that.attr('id') + ext);
+  /*  if (userAgent.indexOf("Safari") > -1){
+        var audioObj = new Audio("sound/mp3/1.mp3") ;
+    } else {
+        var path; 
+        var audioObj = new Audio("sound/ogg/" + that.attr('id') + ext);
+        path = "sound/ogg"+that.attr('id') + ext;
+        console.log(userAgent.indexOf("Safari")+"**"+path);
+    } */
+    console.log(userAgent.indexOf("Safari")+"**"+audioObj);
+    audioObj.play() ;
 };
 
 
