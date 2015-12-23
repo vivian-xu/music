@@ -50,15 +50,12 @@ var sdPlayer = function(that){
     var ext = '.ogg';
     var exts = '.mp3'
     var audioObj = (userAgent.indexOf("Safari") > -1) ? new Audio("sound/mp3/1.mp3") : new Audio("sound/ogg/" + that.attr('id') + ext);
-  /*  if (userAgent.indexOf("Safari") > -1){
-        var audioObj = new Audio("sound/mp3/1.mp3") ;
+    if(userAgent.indexOf('Safari') > -1 || userAgent.indexOf('UCBrowser')> -1){
+        audioObj = new Audio("sound/mp3/3.mp3");
     } else {
-        var path; 
-        var audioObj = new Audio("sound/ogg/" + that.attr('id') + ext);
-        path = "sound/ogg"+that.attr('id') + ext;
-        console.log(userAgent.indexOf("Safari")+"**"+path);
-    } */
-    console.log(userAgent.indexOf("Safari")+"**"+audioObj);
+        audioObj = new Audio("sound/ogg/" + that.attr('id') + ext);
+    }
+    console.log(userAgent+"**"+audioObj);
     audioObj.play() ;
 };
 
