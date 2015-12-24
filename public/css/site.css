@@ -1,41 +1,96 @@
-html {
-    font-size: 16px;
+html{
+    font-family: "inger, 'Helvetica Neue', Helvetica, Arial, sans-ser";
+    font-size: 100px;
 }
+body{
+    font-size:0px;
+}
+
 #piano {
-    font-size: 0;
     display: block;
-    width: 37rem;
-    border: 1px solid #efe;
+    width: 100%;
     margin: 30px auto;
     text-align: center;
+    white-space: nowrap;
 }
 .keyW, .keyB {
     box-size: border-box;
     display: inline-block;
     position: relative;
-    margin-left: -1px;
+    font-size:16px;
+    vertical-align: top;
+    margin: 0 1px;
+    width:0.426rem;
+    height: 0.4rem;
 }
 
-.whiteKey {
+.keyW {
+    background-color: #cceeff;
+}
+
+.keyB {
+    background-color: #00dd00;
+    width: 0.3rem;
+}
+
+.keyW + .keyB, .keyB + .keyW{
+    margin-left: calc(-0.3rem/2);
+}
+.whiteKey, .blackKey{
     box-size: border-box;
-    width: 4rem;
-    height: 12rem;
-    border: 1px solid #000;
-    border-radius: 0.3rem;
-    background-color: #fff;:
+    position: absolute;
+    text-align: center;
+    top: 1rem;
+}
+.whiteKey {
+    width: 0.426rem;
+    height: 1.689rem;
+    border-radius: 0.05rem;
+    background: rgba(250, 240, 230, 0.84) ;
 }
 
 .blackKey {
-    box-size: border-box;
+    display: block;
+    width: 0.3rem;
+    height: 1.2rem;
+    background-color: #000;
+    border-radius: 0.05rem;
+    color: #b49f81;
+    z-index: 20;
+    margin-top: -2px;
+}
+
+.whiteKey span ,.blackKey span{
     display: block;
     position: absolute;
-    width: 2.5rem;
-    height: 8rem;
-    background-color: #000;
-    border: 1px solid #fff;
-    border-radius: 0 0 0.3rem 0.3rem;
-    margin-top: -1rem ;
-    margin-left: -1.25rem;
-
-    z-index: 10;
+    color: #7d520b;
+    width: 100%;
+    bottom: 0.15rem;
 }
+
+.blackKey span {
+    bottom: 10px;
+}
+
+/* whitekey down 时的样式 */
+
+.wkdown {
+    background: rgba(250, 240, 230, 0.84) ;
+    /* For Latest Opera */
+    box-shadow: 0px 1px 10px 2px rgba(109, 105, 101, 0.84) inset;
+    /* For Chrome5+, Safari5+ */
+    -webkit-box-shadow: 0px 1px 10px 2px rgba(109, 105, 101, 0.84) inset;
+    /* For Firefox3.6+ */
+    -moz-box-shadow: 0px 1px 10px 2px rgba(109, 105, 101, 0.84) inset;
+}
+
+.bkdown {
+    background: #000;
+    /* For Latest Opera */
+    box-shadow: 0px 1px 10px 2px rgba(0, 0, 0, 0.84) inset;
+    /* For Chrome5+, Safari5+ */
+    -webkit-box-shadow: 0px 1px 10px 2px rgba(0, 0, 0, 0.84) inset;
+    /* For Firefox3.6+ */
+    -moz-box-shadow: 0px 1px 10px 2px rgba(0, 0, 0, 0.84) inset;
+}
+
