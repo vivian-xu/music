@@ -33,7 +33,11 @@ body{
     background-color: #00dd00;
     width: 0.3rem;
 }
-
+.keyB:after {
+    content: '';
+    border: 3px none none none solid #fff;
+    
+}
 .keyW + .keyB, .keyB + .keyW{
     margin-left: calc(-0.3rem/2);
     margin-left: -0.15rem;

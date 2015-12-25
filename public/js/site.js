@@ -1,5 +1,4 @@
-
-console.log($("html").css("font-size"));
+var userAgent = navigator.userAgent;
 //  添加事件，兼容大部分浏览器
 function addEvent(obj, type, fn){ // type是无 on 的事件
     if(window.addEventListener){
@@ -11,6 +10,59 @@ function addEvent(obj, type, fn){ // type是无 on 的事件
     }
 }
 
+function judge() {
+    var devWidth = window.innerWidth;
+    var devHeight = window.innerHeight;
+    var lorp ="";
+    console.log('width'+devWidth+'; height:'+devHeight);
+    if(devWidth > devHeight){
+        lorp = "landscape";
+    } else {
+        lorp = "portrait";
+    }
+    return lorp;
+}
+var lp = judge();
+if(lp === "landscape") {
+    console.log("land");
+} else {
+    console.log("port");
+}
+
+// orientation
+var supportOrientationChange = "onorientationchange" in window;
+var orientationEvent = supportOrientationChange ? "onorientationchange" : "resize"; 
+addEvent(window, orientationEvent, function(){
+    var deviceType="";  
+       //  判断设备类型   
+    var text =''; 
+   if (userAgent.indexOf("iPad") > 0) {  
+       deviceType = "isIpad";  
+    } else if (userAgent.indexOf("Android") > 0) {  
+       deviceType = "isAndroid";  
+    } else {  
+       text = text+"<p>既不是ipad，也不是安卓!</p>";  
+       return;  
+    }  
+        // 判断横竖屏   
+    if ("isIpad" == deviceType) {  
+        if(Math.abs(window.orientation) == 90){
+         text = text+"<p>我是ipad的横屏,</p>";  
+     } else {  
+        text = text+"我是ipad的竖屏,";  
+     }  
+        } else if ("isAndroid" == deviceType ) {  
+            if (Math.abs(window.orientation) != 90) {  
+            text = text+"<p>我是安卓的横屏</p>";  
+        } else {  
+            text = text+"我是安卓的竖屏";  
+        }  
+        }
+    $("#opern").html(text);  
+})
+
+console.log($("html").css("font-size"));
+
 // 判断交互方式
 var interEvent = function(){
     var eventObj={};
@@ -21,7 +73,6 @@ console.log(interEvent());
 
 // 判断部分浏览器
 var supportMp3 = function(){
-    var userAgent = navigator.userAgent;
     var isSupportMp3 = "";
     if(userAgent.indexOf('Safari') > -1 || userAgent.indexOf('UCBrowser')> -1){
         isSupportMp3 = "true";
