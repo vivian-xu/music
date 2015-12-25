@@ -59,6 +59,7 @@ addEvent(window, orientationEvent, function(){
         }  
         }
     $("#opern").html(text);  
+    alert(text);
 })
 
 console.log($("html").css("font-size"));
