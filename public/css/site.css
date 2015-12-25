@@ -13,6 +13,7 @@ body{
     text-align: center;
     white-space: nowrap;
 }
+/* 每一个key的容器 */
 .keyW, .keyB {
     box-size: border-box;
     display: inline-block;
@@ -35,7 +36,9 @@ body{
 
 .keyW + .keyB, .keyB + .keyW{
     margin-left: calc(-0.3rem/2);
+    margin-left: -0.15rem;
 }
+/* key 本身 */
 .whiteKey, .blackKey{
     box-size: border-box;
     position: absolute;
@@ -59,7 +62,7 @@ body{
     z-index: 20;
     margin-top: -2px;
 }
-
+/* key 中的音符  */
 .whiteKey span ,.blackKey span{
     display: block;
     position: absolute;
@@ -72,7 +75,7 @@ body{
     bottom: 10px;
 }
 
-/* whitekey down 时的样式 */
+/* key down 时的样式 */
 
 .wkdown {
     background: rgba(250, 240, 230, 0.84) ;
